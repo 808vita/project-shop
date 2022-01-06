@@ -1,6 +1,6 @@
 import React from "react";
 import products from "../products";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 
 const HomeScreen = () => {
