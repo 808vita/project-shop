@@ -1,0 +1,23 @@
+{
+  "name": "project-shop",
+  "version": "1.0.0",
+  "description": "shop project using mern",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/808vita/project-shop.git"
+  },
+  "author": "808Vita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/808vita/project-shop/issues"
+  },
+  "homepage": "https://github.com/808vita/project-shop#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
