@@ -5,6 +5,8 @@ import products from "./data/products.js";
 
 dotenv.config();
 
+connectDB();
+
 const app = express();
 
 app.get("/", (req, res) => {
