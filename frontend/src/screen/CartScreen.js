@@ -12,7 +12,7 @@ import {
 	Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import { useEffect } from "react/cjs/react.development";
 
 const CartScreen = () => {
@@ -35,7 +35,11 @@ const CartScreen = () => {
 	}, [dispatch, productId, qty]);
 
 	const removeFromCartHandler = (id) => {
-		console.log("remove");
+		dispatch(removeFromCart(id));
+	};
+
+	const checkOutHandler = () => {
+		history("/login?redirect=shipping");
 	};
 	return (
 		<Row>
@@ -60,11 +64,11 @@ const CartScreen = () => {
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</Col>
 									<Col md={2}>${item.price}</Col>
-									<Col md={2}>
+									<Col md={3}>
 										<Form.Control
 											className="form-group has-success is-valid"
 											as="select"
-											value={qty}
+											value={item.qty}
 											onChange={(e) =>
 												dispatch(
 													addToCart(item.product, Number(e.target.value))
@@ -86,7 +90,7 @@ const CartScreen = () => {
 										<Button
 											type="button"
 											variant="light"
-											onClick={() => item.product}
+											onClick={() => removeFromCartHandler(item.product)}
 										>
 											<i className="fas fa-trash"></i>
 										</Button>
@@ -97,8 +101,34 @@ const CartScreen = () => {
 					</ListGroup>
 				)}
 			</Col>
-			<Col md={2}></Col>
-			<Col md={2}></Col>
+			<Col md={4}>
+				<Card>
+					<ListGroup variant="flush">
+						<ListGroup.Item>
+							<h3>
+								SUBTOTAL ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+								ITEMS
+							</h3>
+							<h5>
+								$
+								{cartItems
+									.reduce((acc, item) => acc + item.qty * item.price, 0)
+									.toFixed(2)}
+							</h5>
+						</ListGroup.Item>
+						<ListGroup.Item>
+							<Button
+								type="button"
+								className="btn btn-lg btn-primary"
+								disabled={cartItems.length === 0}
+								onClick={checkOutHandler}
+							>
+								Proceed To Checkout
+							</Button>
+						</ListGroup.Item>
+					</ListGroup>
+				</Card>
+			</Col>
 		</Row>
 	);
 };
