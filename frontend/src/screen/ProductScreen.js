@@ -19,7 +19,7 @@ const ProductScreen = () => {
 	const history = useNavigate();
 	let params = useParams();
 
-	const [qty, setQty] = useState(0);
+	const [qty, setQty] = useState(1);
 
 	const dispatch = useDispatch();
 
@@ -31,11 +31,7 @@ const ProductScreen = () => {
 	}, [dispatch, params]);
 
 	const addToCartHandler = () => {
-		if (qty === 0) {
-			history(`/cart/${params.id}?qty=${qty + 1}`);
-		} else {
-			history(`/cart/${params.id}?qty=${qty}`);
-		}
+		history(`/cart/${params.id}?qty=${qty}`);
 	};
 
 	return (
@@ -94,14 +90,14 @@ const ProductScreen = () => {
 											<Col>Qty</Col>
 											<Col>
 												<Form.Control
-													className="nav-pills active dropdown-toggle"
+													className="form-group has-success is-valid"
 													as="select"
 													value={qty}
 													onChange={(e) => setQty(e.target.value)}
 												>
 													{[...Array(product.countInStock).keys()].map((x) => (
 														<option
-															className="dropdown-item active "
+															className="dropdown-item  active "
 															key={x + 1}
 															value={x + 1}
 														>
