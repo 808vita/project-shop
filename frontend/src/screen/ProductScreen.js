@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	Row,
@@ -16,6 +16,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 const ProductScreen = () => {
+	const history = useNavigate();
 	let params = useParams();
 
 	const [qty, setQty] = useState(0);
@@ -29,7 +30,13 @@ const ProductScreen = () => {
 		dispatch(listProductDetails(params.id));
 	}, [dispatch, params]);
 
-	const addToCartHandler = "";
+	const addToCartHandler = () => {
+		if (qty === 0) {
+			history(`/cart/${params.id}?qty=${qty + 1}`);
+		} else {
+			history(`/cart/${params.id}?qty=${qty}`);
+		}
+	};
 
 	return (
 		<>
@@ -90,7 +97,7 @@ const ProductScreen = () => {
 													className="nav-pills active dropdown-toggle"
 													as="select"
 													value={qty}
-													onchange={(e) => setQty(e.target.value)}
+													onChange={(e) => setQty(e.target.value)}
 												>
 													{[...Array(product.countInStock).keys()].map((x) => (
 														<option
