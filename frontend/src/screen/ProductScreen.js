@@ -95,7 +95,7 @@ const ProductScreen = () => {
 											<Col>Qty</Col>
 											<Col>
 												<Form.Control
-													className="form-group has-success is-valid"
+													className="form-group has-success "
 													as="select"
 													value={qty}
 													onChange={(e) => setQty(e.target.value)}
