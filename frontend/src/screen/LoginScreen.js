@@ -38,6 +38,7 @@ const LoginScreen = () => {
 			{loading && <Loader />}
 
 			{error ? <Message variant="danger" children={error} /> : <></>}
+
 			<hr></hr>
 			<Form onSubmit={submitHandler}>
 				<Form.Group controlId="email">
