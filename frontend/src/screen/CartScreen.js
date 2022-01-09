@@ -47,7 +47,7 @@ const CartScreen = () => {
 				<h1>Shopping Cart</h1>
 				<hr></hr>
 				{cartItems.length === 0 ? (
-					<Message childern="Your cart is empty!" />
+					<Message children="Your cart is empty!" />
 				) : (
 					<ListGroup variant="flush" className="cart-pad rounded">
 						{cartItems.map((item) => (
