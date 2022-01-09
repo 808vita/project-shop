@@ -19,6 +19,14 @@ h3 {
 	padding: 1rem 0;
 }
 
+hr {
+	margin: 1rem 0;
+}
+
 .rating span {
 	margin: 0.1rem;
+}
+.cart-pad {
+	margin: 1rem 0;
+	padding-top: 1rem;
 }

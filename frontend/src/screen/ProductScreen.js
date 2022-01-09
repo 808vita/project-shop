@@ -49,7 +49,7 @@ const ProductScreen = () => {
 						<Image src={product.image} alt={product.name} fluid />
 					</Col>
 					<Col md={3}>
-						<ListGroup variant="flush">
+						<ListGroup variant="flush" className="cart-pad ">
 							<ListGroup.Item>
 								<h2>{product.name}</h2>
 							</ListGroup.Item>
