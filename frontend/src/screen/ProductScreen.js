@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+	Container,
 	Row,
 	Col,
 	Image,
@@ -45,11 +46,16 @@ const ProductScreen = () => {
 				<Message variant="danger" children={error} />
 			) : (
 				<Row>
-					<Col md={6}>
-						<Image src={product.image} alt={product.name} fluid />
+					<Col md={"auto"} lg={6}>
+						<Image
+							src={product.image}
+							alt={product.name}
+							fluid
+							className="rounded mb-2"
+						/>
 					</Col>
-					<Col md={3}>
-						<ListGroup variant="flush" className="cart-pad ">
+					<Col md={"auto"} lg={3}>
+						<ListGroup variant="flush" className="rounded mb-2 ">
 							<ListGroup.Item>
 								<h2>{product.name}</h2>
 							</ListGroup.Item>
@@ -65,9 +71,9 @@ const ProductScreen = () => {
 							</ListGroup.Item>
 						</ListGroup>
 					</Col>
-					<Col md={3}>
+					<Col md={12} lg={3}>
 						<Card>
-							<ListGroup variant="flush">
+							<ListGroup variant="flush" className=" p-2 ">
 								<ListGroup.Item>
 									<Row>
 										<Col>Price:</Col>
