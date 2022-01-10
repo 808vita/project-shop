@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -79,7 +79,7 @@ const PlaceOrderScreen = () => {
 							{cart.cartItems.length === 0 ? (
 								<Message variant="danger">Your cart is empty!</Message>
 							) : (
-								<ListGroup variant="flush">
+								<ListGroup variant="flush" className="bg-dark">
 									{cart.cartItems.map((item, index) => (
 										<ListGroup.Item key={index}>
 											<Row>
@@ -136,7 +136,7 @@ const PlaceOrderScreen = () => {
 								</Row>
 							</ListGroup.Item>
 
-							<ListGroup.Item>
+							<ListGroup.Item className="bg-dark">
 								<Row>
 									<Col>Total</Col>
 									<Col>${cart.totalPrice}</Col>
