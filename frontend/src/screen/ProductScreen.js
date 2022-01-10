@@ -42,14 +42,19 @@ const ProductScreen = () => {
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<Message variant="danger">{error}</Message>
+				<Message variant="danger" children={error} />
 			) : (
 				<Row>
-					<Col md={6}>
-						<Image src={product.image} alt={product.name} fluid />
+					<Col md={"auto"} lg={6}>
+						<Image
+							src={product.image}
+							alt={product.name}
+							fluid
+							className="rounded mb-2"
+						/>
 					</Col>
-					<Col md={3}>
-						<ListGroup variant="flush">
+					<Col md={"auto"} lg={3}>
+						<ListGroup variant="flush" className="rounded mb-2 ">
 							<ListGroup.Item>
 								<h2>{product.name}</h2>
 							</ListGroup.Item>
@@ -65,9 +70,9 @@ const ProductScreen = () => {
 							</ListGroup.Item>
 						</ListGroup>
 					</Col>
-					<Col md={3}>
+					<Col md={12} lg={3}>
 						<Card>
-							<ListGroup variant="flush">
+							<ListGroup variant="flush" className=" p-2 ">
 								<ListGroup.Item>
 									<Row>
 										<Col>Price:</Col>
@@ -90,7 +95,7 @@ const ProductScreen = () => {
 											<Col>Qty</Col>
 											<Col>
 												<Form.Control
-													className="form-group has-success is-valid"
+													className="form-group has-success "
 													as="select"
 													value={qty}
 													onChange={(e) => setQty(e.target.value)}

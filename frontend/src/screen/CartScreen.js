@@ -45,10 +45,11 @@ const CartScreen = () => {
 		<Row>
 			<Col md={8}>
 				<h1>Shopping Cart</h1>
+				<hr></hr>
 				{cartItems.length === 0 ? (
-					<Message childern="Your cart is empty!" />
+					<Message children="Your cart is empty!" />
 				) : (
-					<ListGroup variant="flush">
+					<ListGroup variant="flush" className="cart-pad rounded">
 						{cartItems.map((item) => (
 							<ListGroup.Item key={item.product}>
 								<Row>
@@ -64,7 +65,7 @@ const CartScreen = () => {
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</Col>
 									<Col md={2}>${item.price}</Col>
-									<Col md={3}>
+									<Col md={3} xs={8}>
 										<Form.Control
 											className="form-group has-success is-valid"
 											as="select"
@@ -86,7 +87,7 @@ const CartScreen = () => {
 											))}
 										</Form.Control>
 									</Col>
-									<Col md={2}>
+									<Col md={2} xs={4}>
 										<Button
 											type="button"
 											variant="light"
@@ -96,6 +97,7 @@ const CartScreen = () => {
 										</Button>
 									</Col>
 								</Row>
+								<hr></hr>
 							</ListGroup.Item>
 						))}
 					</ListGroup>
