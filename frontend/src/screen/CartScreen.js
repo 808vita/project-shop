@@ -39,7 +39,7 @@ const CartScreen = () => {
 	};
 
 	const checkOutHandler = () => {
-		history("/login?redirect=shipping");
+		history("/login?redirect=/shipping");
 	};
 	return (
 		<Row>
