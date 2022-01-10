@@ -16,6 +16,17 @@ const OrderScreen = () => {
 
 	const { order, loading, error } = orderDetails;
 
+	if (!loading) {
+		// calculate prices
+		const addDecimals = (num) => {
+			return (Math.round(num * 100) / 100).toFixed(2);
+		};
+
+		order.itemsPrice = addDecimals(
+			order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+		);
+	}
+
 	useEffect(
 		() => {
 			dispatch(getOrderDetails(orderId));
@@ -37,18 +48,41 @@ const OrderScreen = () => {
 						<ListGroup.Item>
 							<h2>Shipping</h2>
 							<p>
+								<strong>Name:</strong> {order.user.name}
+							</p>
+							<p>
+								<strong>Email:</strong> {order.user.email}
+							</p>
+
+							<p>
 								<strong>Address: </strong>
 								{order.shippingAddress.address},{order.shippingAddress.city},
 								{order.shippingAddress.postalCode},
 								{order.shippingAddress.country}
 							</p>
+							{order.isDelivered ? (
+								<Message variant="success">
+									Delivered od {order.deliveredAt}
+								</Message>
+							) : (
+								<Message variant="danger">Not Delivered</Message>
+							)}
 						</ListGroup.Item>
 						<hr></hr>
+
 						<ListGroup.Item>
 							<h2>Payment Method</h2>
-							<strong>Method: </strong>
-							{order.paymentMethod}
+							<p>
+								<strong>Method: </strong>
+								{order.paymentMethod}
+							</p>
+							{order.isPaid ? (
+								<Message variant="success">Paid od {order.paidAt}</Message>
+							) : (
+								<Message variant="danger">Not Paid</Message>
+							)}
 						</ListGroup.Item>
+
 						<hr></hr>
 						<h5>
 							{order.orderItems.length === 0 ? (
