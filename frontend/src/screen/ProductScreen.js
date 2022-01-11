@@ -66,13 +66,13 @@ const ProductScreen = () => {
 							</ListGroup.Item>
 							<ListGroup.Item>Price: ${product.price}</ListGroup.Item>
 							<ListGroup.Item>
-								Description: ${product.description}
+								Description: {product.description}
 							</ListGroup.Item>
 						</ListGroup>
 					</Col>
 					<Col md={12} lg={3}>
 						<Card>
-							<ListGroup variant="flush" className=" p-2 ">
+							<ListGroup variant="flush" className="  ">
 								<ListGroup.Item>
 									<Row>
 										<Col>Price:</Col>
@@ -95,7 +95,7 @@ const ProductScreen = () => {
 											<Col>Qty</Col>
 											<Col>
 												<Form.Control
-													className="form-group has-success "
+													className="form-group  "
 													as="select"
 													value={qty}
 													onChange={(e) => setQty(e.target.value)}

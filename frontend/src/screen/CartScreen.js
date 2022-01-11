@@ -39,7 +39,7 @@ const CartScreen = () => {
 	};
 
 	const checkOutHandler = () => {
-		history("/login?redirect=shipping");
+		history("/login?redirect=/shipping");
 	};
 	return (
 		<Row>
@@ -121,7 +121,7 @@ const CartScreen = () => {
 						<ListGroup.Item>
 							<Button
 								type="button"
-								className="btn btn-lg btn-primary"
+								className="btn btn-lg btn-primary w-100"
 								disabled={cartItems.length === 0}
 								onClick={checkOutHandler}
 							>

@@ -17,7 +17,7 @@ const orderSchema = mongoose.Schema(
 					type: Number,
 					required: true,
 				},
-				imgae: {
+				image: {
 					type: String,
 					required: true,
 				},
@@ -41,7 +41,7 @@ const orderSchema = mongoose.Schema(
 				type: String,
 				required: true,
 			},
-			postalcode: {
+			postalCode: {
 				type: String,
 				required: true,
 			},
