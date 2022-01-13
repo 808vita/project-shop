@@ -32,6 +32,11 @@ const ProductScreen = () => {
 	const productDetails = useSelector((state) => state.productDetails);
 	const { loading, error, product } = productDetails;
 
+	const review =
+		product.reviews[Math.floor(Math.random() * (product.reviews.length - 1))];
+
+	const recentReview = product.reviews[product.reviews.length - 1];
+
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
@@ -164,12 +169,31 @@ const ProductScreen = () => {
 					<Row>
 						<Col md={12} lg={9}>
 							<ListGroup variant="flush" className="rounded mt-2">
-								<h2 className="rounded m-2">Reviews</h2>
+								<h2 className="rounded m-2">Recent Review</h2>
 								<hr></hr>
 
 								{product.reviews.length === 0 && <Message>No Reviews</Message>}
 
-								{product.reviews.map((review) => (
+								<ListGroup.Item variant="flush">
+									<strong>{recentReview.name}</strong>
+									<Rating value={recentReview.rating} />
+									<p>{recentReview.createdAt}</p>
+									<p>{recentReview.comment}</p>
+								</ListGroup.Item>
+							</ListGroup>
+
+							<ListGroup variant="flush" className="rounded mt-2">
+								<h2 className="rounded m-2">Random Review</h2>
+								<hr></hr>
+
+								<ListGroup.Item variant="flush">
+									<strong>{review.name}</strong>
+									<Rating value={review.rating} />
+									<p>{review.createdAt}</p>
+									<p>{review.comment}</p>
+								</ListGroup.Item>
+
+								{/* {product.reviews.map((review) => (
 									<ListGroup.Item key={review._id} variant="flush">
 										{console.log(review)}
 										<strong>{review.name}</strong>
@@ -177,7 +201,7 @@ const ProductScreen = () => {
 										<p>{review.createdAt}</p>
 										<p>{review.comment}</p>
 									</ListGroup.Item>
-								))}
+								))} */}
 							</ListGroup>
 						</Col>
 						<Col md={12} lg={9}>
