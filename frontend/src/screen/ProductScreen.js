@@ -164,13 +164,13 @@ const ProductScreen = () => {
 					<Row>
 						<Col md={12} lg={9}>
 							<ListGroup variant="flush" className="rounded mt-2">
-								<ListGroup.Item>
-									<h2>Reviews</h2>
-								</ListGroup.Item>
+								<h2 className="rounded m-2">Reviews</h2>
+								<hr></hr>
+
 								{product.reviews.length === 0 && <Message>No Reviews</Message>}
 
 								{product.reviews.map((review) => (
-									<ListGroup.Item key={review._id}>
+									<ListGroup.Item key={review._id} variant="flush">
 										{console.log(review)}
 										<strong>{review.name}</strong>
 										<Rating value={review.rating} />
@@ -178,7 +178,10 @@ const ProductScreen = () => {
 										<p>{review.comment}</p>
 									</ListGroup.Item>
 								))}
-
+							</ListGroup>
+						</Col>
+						<Col md={12} lg={9}>
+							<ListGroup variant="flush" className="rounded mt-2">
 								<ListGroup.Item>
 									<h2>Write a Customer Review</h2>
 									{errorProductReview && (
