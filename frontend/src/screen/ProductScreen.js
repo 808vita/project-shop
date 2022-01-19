@@ -17,6 +17,7 @@ import {
 } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Meta from "../components/Meta";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
 const ProductScreen = () => {
@@ -78,6 +79,7 @@ const ProductScreen = () => {
 				<Message variant="danger" children={error} />
 			) : (
 				<>
+					<Meta title={product.name} />
 					<Row>
 						<Col md={"auto"} lg={6}>
 							<Image
