@@ -174,26 +174,31 @@ const ProductScreen = () => {
 								<h2 className="rounded m-2">Recent Review</h2>
 								<hr></hr>
 
-								{product.reviews.length === 0 && <Message>No Reviews</Message>}
-
-								<ListGroup.Item variant="flush">
-									<strong>{recentReview.name}</strong>
-									<Rating value={recentReview.rating} />
-									<p>{recentReview.createdAt}</p>
-									<p>{recentReview.comment}</p>
-								</ListGroup.Item>
+								{product.reviews.length === 0 ? (
+									<Message>No Reviews</Message>
+								) : (
+									<ListGroup.Item variant="flush">
+										<strong>{recentReview.name}</strong>
+										<Rating value={recentReview.rating} />
+										<p>{recentReview.createdAt}</p>
+										<p>{recentReview.comment}</p>
+									</ListGroup.Item>
+								)}
 							</ListGroup>
 
 							<ListGroup variant="flush" className="rounded mt-2">
 								<h2 className="rounded m-2">Random Review</h2>
 								<hr></hr>
-
-								<ListGroup.Item variant="flush">
-									<strong>{review.name}</strong>
-									<Rating value={review.rating} />
-									<p>{review.createdAt}</p>
-									<p>{review.comment}</p>
-								</ListGroup.Item>
+								{product.reviews.length === 0 ? (
+									<Message>No Reviews</Message>
+								) : (
+									<ListGroup.Item variant="flush">
+										<strong>{review.name}</strong>
+										<Rating value={review.rating} />
+										<p>{review.createdAt}</p>
+										<p>{review.comment}</p>
+									</ListGroup.Item>
+								)}
 
 								{/* {product.reviews.map((review) => (
 									<ListGroup.Item key={review._id} variant="flush">
